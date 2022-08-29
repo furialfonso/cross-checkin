@@ -3,8 +3,6 @@ package com.crossing.dto.request;
 import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
-import org.springframework.boot.context.properties.bind.Name;
-
 import lombok.Data;
 
 @Data
