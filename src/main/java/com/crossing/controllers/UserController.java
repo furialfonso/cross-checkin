@@ -2,6 +2,7 @@ package com.crossing.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +26,7 @@ public class UserController {
 	}
 
 	@PostMapping("create")
-	public ResponseEntity<UserResponse> CreateUser(@RequestBody UserRequest userRequest) {
+	public ResponseEntity<UserResponse> CreateUser(@Validated @RequestBody UserRequest userRequest) {
 		return userService.create(userRequest);
 	}
 

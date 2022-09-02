@@ -50,7 +50,7 @@ public class User implements Serializable {
 	private String lastName;
 	@Column(unique = true, nullable = false, length = 100)
 	private String email;
-	@Column(nullable = false, length = 16)
+	@Column(nullable = false, length = 100)
 	private String password;
 	private Timestamp createdAt;
 	private Timestamp updatedAt;

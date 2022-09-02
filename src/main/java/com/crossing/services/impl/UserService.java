@@ -3,6 +3,7 @@ package com.crossing.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.crossing.dto.request.UserRequest;
@@ -16,6 +17,8 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserRepository userRepository;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	@Override
 	public ResponseEntity<UserResponse> create(UserRequest userRequest) {
@@ -23,8 +26,8 @@ public class UserService implements IUserService {
 		user.setName(userRequest.getName());
 		user.setLastName(userRequest.getLastName());
 		user.setEmail(userRequest.getEmail());
-		user.setPassword(userRequest.getPassword());
-
+		String passEncoder = passwordEncoder.encode(userRequest.getPassword());
+		user.setPassword(passEncoder);
 		user = userRepository.save(user);
 
 		UserResponse userResponse = new UserResponse();
